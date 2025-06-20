@@ -30,7 +30,16 @@
     <div id="note">⚠️ شغّل عبر خادم محلي أو HTTPS لتمكين الميكروفون.</div>
   </div>
   <script>
-    const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY';
+    const OPENAI_API_KEY = 'import OpenAI from "openai";
+const client = new OpenAI();
+
+const response = await client.responses.create({
+    model: "gpt-4.1",
+    input: "Write a one-sentence bedtime story about a unicorn.",
+});
+
+console.log(response.output_text);
+';
 
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       document.getElementById('note').textContent = 'الميكروفون غير مدعوم في هذا المتصفح.';
